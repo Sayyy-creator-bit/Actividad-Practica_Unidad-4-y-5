@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Temperatura</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      color: #555;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      background-color: #fff;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    #resultadoTemperatura {
+      font-size: 24px;
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversor de Temperatura</h1>
+  
+  <label for="selectorTemperatura">Por favor, seleccione una opción de conversión:</label>
+  <select id="selectorTemperatura" onchange="convertirTemperatura()">
+    <option value="selecciona" style="color: #777;">----</option>
+    <option value="celsiusAFahrenheit" style="color: #007bff;">Grados Celsius a grados Fahrenheit</option>
+    <option value="fahrenheitACelsius" style="color: #28a745;">Grados Fahrenheit a grados Celsius</option>
+  </select>
+  
+  <p>Por favor, ingrese el valor a convertir:</p>
+  <input type="number" id="valorTemperatura">
+  
+  <p id="resultadoTemperatura"></p>
+  
+  <script>
+    function convertirTemperatura() {
+      var opcion = document.getElementById("selectorTemperatura").value;
+      var valor = parseFloat(document.getElementById("valorTemperatura").value);
+      var resultado = 0;
+
+      if (opcion === "celsiusAFahrenheit") {
+        resultado = (valor * 9/5) + 32;
+      } else if (opcion === "fahrenheitACelsius") {
+        resultado = (valor - 32) * 5/9;
+      }
+      
+      document.getElementById("resultadoTemperatura").innerHTML = "Resultado: " + resultado;
+    }
+  </script>
+</body>
+</html>
+

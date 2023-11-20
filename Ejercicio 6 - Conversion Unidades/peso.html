@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Peso</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      color: #555;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      background-color: #fff;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    #resultadoPeso {
+      font-size: 24px;
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversor de Peso</h1>
+  
+  <label for="selectorPeso">Por favor, seleccione una opción de conversión:</label>
+  <select id="selectorPeso" onchange="convertirPeso()" style="color: #007bff;">
+    <option value="selecciona" style="color: #777;">----</option>
+    <option value="kilosALibras">Peso en kilogramos a peso en libras</option>
+    <option value="librasAKilos">Peso en libras a peso en kilogramos</option>
+  </select>
+  
+  <p>Por favor, ingrese el valor a convertir: </p>
+  <input type="number" id="valorPeso">
+  
+  <p id="resultadoPeso"></p>
+  
+  <script>
+    function convertirPeso() {
+      var opcion = document.getElementById("selectorPeso").value;
+      var valor = parseFloat(document.getElementById("valorPeso").value);
+      var resultado = 0;
+
+      if (opcion === "kilosALibras") {
+        resultado = valor * 2.20462;
+      } else if (opcion === "librasAKilos") {
+        resultado = valor / 2.20462;
+      }
+      
+      document.getElementById("resultadoPeso").innerHTML = "Resultado: " + resultado;
+    }
+  </script>
+</body>
+</html>

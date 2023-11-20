@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Tiempo</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      color: #555;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      background-color: #fff;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    #resultadoTiempo {
+      font-size: 24px;
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversor de Tiempo</h1>
+  
+  <label for="selectorTiempo">Por favor, seleccione una opción de conversión:</label>
+  <select id="selectorTiempo" onchange="convertirTiempo()" style="color: #007bff;">
+    <option value="selecciona" style="color: #777;">----</option>
+    <option value="minutosAHoras">Tiempo en minutos a tiempo en horas</option>
+    <option value="horasAMinutos">Tiempo en horas a tiempo en minutos</option>
+  </select>
+  
+  <p>Por favor, ingrese el valor a convertir:</p>
+  <input type="number" id="valorTiempo">
+  
+  <p id="resultadoTiempo"></p>
+  
+  <script>
+    function convertirTiempo() {
+      var opcion = document.getElementById("selectorTiempo").value;
+      var valor = parseFloat(document.getElementById("valorTiempo").value);
+      var resultado = 0;
+
+      if (opcion === "minutosAHoras") {
+        resultado = valor / 60;
+      } else if (opcion === "horasAMinutos") {
+        resultado = valor * 60;
+      }
+      
+      document.getElementById("resultadoTiempo").innerHTML = "Resultado: " + resultado;
+    }
+  </script>
+</body>
+</html>
