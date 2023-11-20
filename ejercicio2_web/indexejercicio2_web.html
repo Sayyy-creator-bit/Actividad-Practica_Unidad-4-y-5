@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2- Calculadora Hospitalaria</title>
+</head>
+<body>
+    <script src="2.js"></script>
+    <h2>Facturación Hospitalaria</h2>
+
+    <form id="formulario">
+        <label for="nombre">Nombre del Paciente:</label>
+        <input type="text" id="nombre" required><br>
+
+        <label for="costoConsulta">Costo de Consulta:</label>
+        <input type="number" id="costoConsulta" required><br>
+
+        <label for="costoHospitalizacion">Costo de Hospitalización por día:</label>
+        <input type="number" id="costoHospitalizacion" required><br>
+
+        <label for="diasHospital">Número de Días en Hospital:</label>
+        <input type="number" id="diasHospital" required><br>
+
+        <label for="costosVarios">Costos Varios (análisis, cirugías, etc.):</label>
+        <input type="number" id="costosVarios" required><br>
+
+        <label for="costoMedicamentos">Costo de Medicamentos:</label>
+        <input type="number" id="costoMedicamentos" required><br>
+
+        <label for="deduccionesMedicamentos">Deducciones por Medicamentos:</label>
+        <input type="number" id="deduccionesMedicamentos"><br>
+
+        <label for="deduccionesConsulta">Deducciones por Consulta:</label>
+        <input type="number" id="deduccionesConsulta"><br>
+
+        <label for="deduccionesHospitalizacion">Deducciones por Hospitalización:</label>
+        <input type="number" id="deduccionesHospitalizacion"><br>
+
+        <label for="deduccionesSeguro">Deducciones por Seguro (%):</label>
+        <input type="number" id="deduccionesSeguro"><br>
+
+        <button type="button" onclick="calcularFacturacion()">Calcular Facturación</button>
+        <button type="button" onclick="limpiar()">Limpiar pantalla</button>
+    </form>
+
+    <h2>Resultado:</h2>
+
+    <p id="resultado"></p>
+
+  </body>
+</html>
