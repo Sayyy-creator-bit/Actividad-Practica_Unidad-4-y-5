@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Figuras</title>
+    <style>
+        .figura {
+            position: relative;
+            display: inline-block;
+            margin: 15px;
+        }
+
+        .formula {
+            position: absolute;
+            top: 70%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(168, 11, 241, 0.8);
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Figuras</h1>
+
+    <div class="figura" onmouseover="mostrarFormula(this)" onmouseout="ocultarFormula(this)">
+        <img src="https://www.smartick.es/blog/wp-content/uploads/cuadrado-222x201.png" alt="Cuadrado" width="150" height="150" align="left">
+        <div class="formula">Cuadrado: Área = lado^2<br> Perímetro = 4 * lado</div>
+        <form onsubmit="calcularCuadrado(); return false;">
+            <label for="ladoCuadrado">Lado:</label>
+            <input type="number" id="ladoCuadrado" required>
+            <select id="operacionCuadrado" required>
+                <option value="area">Área</option>
+                <option value="perimetro">Perímetro</option>
+            </select>
+            <button type="submit">Calcular</button>
+            <br></br>
+            <label for="resultadoCuadrado">Resultado:</label>
+            <p class="resultado" id="resultadoCuadrado"></p>
+        </form>
+    </div>
+
+    <div class="figura" onmouseover="mostrarFormula(this)" onmouseout="ocultarFormula(this)">
+        <img src="https://www2.ual.es/jardinmatema/wp-content/uploads/2022/01/triangulo_sinfondo.png" alt="Triángulo" width="150" height="150" align="left">
+        <div class="formula">Triángulo: Área = (base * altura) / 2<br> Perímetro = lado1 + lado2 + lado3</div>
+        <form onsubmit="calcularTriangulo(); return false;">
+            <label for="baseTriangulo">Base:</label>
+            <input type="number" id="baseTriangulo" required>
+            <label for="alturaTriangulo">Altura:</label>
+            <input type="number" id="alturaTriangulo" required>
+            <select id="operacionTriangulo" required>
+                <option value="area">Área</option>
+                <option value="perimetro">Perímetro</option>
+            </select>
+            <button type="submit">Calcular</button>
+            <br></br>
+            <label for="resultadotriangulo">Resultado:</label>
+            <p class="resultado" id="resultadoTriangulo"></p>
+        </form>
+    </div>
+
+    <div class="figura" onmouseover="mostrarFormula(this)" onmouseout="ocultarFormula(this)">
+        <img src="https://static.vecteezy.com/system/resources/previews/009/504/943/non_2x/brush-strokes-circles-of-paint-on-a-white-background-ink-hand-drawn-brush-circle-logo-vector.jpg" alt="Círculo" width="150" height="150" align="left">
+        <div class="formula">Círculo: Área = π * radio^2<br> Perímetro = 2 * π * radio</div>
+        <form onsubmit="calcularCirculo(); return false;">
+            <label for="radioCirculo">Radio:</label>
+            <input type="number" id="radioCirculo" required>
+            <select id="operacionCirculo" required>
+                <option value="area">Área</option>
+                <option value="perimetro">Perímetro</option>
+            </select>
+            <button type="submit">Calcular</button>
+            <br></br>
+            <label for="resultadoCirculo">Resultado:</label>
+            <p class="resultado" id="resultadoCirculo"></p>
+        </form>
+    </div>
+
+    <div class="figura" onmouseover="mostrarFormula(this)" onmouseout="ocultarFormula(this)">
+        <img src="https://www.caracteristicass.de/wp-content/uploads/2018/08/caracteristicas-del-cubo-1.jpg" alt="Cubo" width="150" height="150" align="left">
+        <div class="formula">Cubo: Volumen = lado^3<br> Área Superficial = 6 * lado^2</div>
+        <form onsubmit="calcularCubo(); return false;">
+            <label for="ladoCubo">Lado:</label>
+            <input type="number" id="ladoCubo" required>
+            <select id="operacionCubo" required>
+                <option value="volumen">Volumen</option>
+                <option value="areaSuperficial">Área Superficial</option>
+            </select>
+            <button type="submit">Calcular</button>
+            <br></br>
+            <label for="resultadoCubo">Resultado:</label>
+            <p class="resultado" id="resultadoCubo"></p>
+        </form>
+    </div>
+
+    <div class="figura" onmouseover="mostrarFormula(this)" onmouseout="ocultarFormula(this)">
+        <img src="https://i.pinimg.com/originals/b5/e3/89/b5e389ce55160463f8a7ccbf09075e0e.jpg" alt="Esfera" width="150" height="150" align="left">
+        <div class="formula">Esfera: Volumen = (4/3) * π * r^3<br> Área Superficial = 4 * π * r^2</div>
+        <form onsubmit="calcularEsfera(); return false;">
+            <label for="radioEsfera">Radio:</label>
+            <input type="number" id="radioEsfera" required>
+            <select id="operacionEsfera" required>
+                <option value="volumen">Volumen</option>
+                <option value="areaSuperficial">Área Superficial</option>
+            </select>
+            <button type="submit">Calcular</button>
+            <br></br>
+            <label for="resultadoEsfera">Resultado:</label>
+            <p class="resultado" id="resultadoEsfera"></p>
+        </form>
+    </div>
+
+    <script>
+        function mostrarFormula(figura) {
+            var formula = figura.querySelector('.formula');
+            formula.style.display = 'block';
+        }
+
+        function ocultarFormula(figura) {
+            var formula = figura.querySelector('.formula');
+            formula.style.display = 'none';
+        }
+
+        function calcularCuadrado() {
+        var lado = parseFloat(document.getElementById('ladoCuadrado').value);
+        var operacion = document.getElementById('operacionCuadrado').value;
+        var resultadoElement = document.getElementById('resultadoCuadrado');
+
+        if (operacion === 'area') {
+            var area = lado * lado;
+            resultadoElement.textContent = 'Área: ' + area;
+        } else if (operacion === 'perimetro') {
+            var perimetro = 4 * lado;
+            resultadoElement.textContent = 'Perímetro: ' + perimetro;
+        }
+    }
+
+    function calcularTriangulo() {
+        var base = parseFloat(document.getElementById('baseTriangulo').value);
+        var altura = parseFloat(document.getElementById('alturaTriangulo').value);
+        var operacion = document.getElementById('operacionTriangulo').value;
+        var resultadoElement = document.getElementById('resultadoTriangulo');
+
+        if (operacion === 'area') {
+            var area = (base * altura) / 2;
+            resultadoElement.textContent = 'Área: ' + area;
+        } else if (operacion === 'perimetro') {
+            var perimetro = base + altura;
+            resultadoElement.textContent = 'Perímetro: ' + perimetro;
+        }
+    }
+
+    function calcularCirculo() {
+        var radio = parseFloat(document.getElementById('radioCirculo').value);
+        var operacion = document.getElementById('operacionCirculo').value;
+        var resultadoElement = document.getElementById('resultadoCirculo');
+
+        if (operacion === 'area') {
+            var area = Math.PI * radio * radio;
+            resultadoElement.textContent = 'Área: ' + area;
+        } else if (operacion === 'perimetro') {
+            var perimetro = 2 * Math.PI * radio;
+            resultadoElement.textContent = 'Perímetro: ' + perimetro;
+        }
+    }
+
+    function calcularCubo() {
+        var lado = parseFloat(document.getElementById('ladoCubo').value);
+        var operacion = document.getElementById('operacionCubo').value;
+        var resultadoElement = document.getElementById('resultadoCubo');
+
+        if (operacion === 'volumen') {
+            var volumen = lado * lado * lado;
+            resultadoElement.textContent = 'Volumen: ' + volumen;
+        } else if (operacion === 'areaSuperficial') {
+            var areaSuperficial = 6 * lado * lado;
+            resultadoElement.textContent = 'Área Superficial: ' + areaSuperficial;
+        }
+    }
+
+    function calcularEsfera() {
+        var radio = parseFloat(document.getElementById('radioEsfera').value);
+        var operacion = document.getElementById('operacionEsfera').value;
+        var resultadoElement = document.getElementById('resultadoEsfera');
+
+        if (operacion === 'volumen') {
+            var volumen = (4/3) * Math.PI * radio * radio * radio;
+            resultadoElement.textContent = 'Volumen: ' + volumen;
+        } else if (operacion === 'areaSuperficial') {
+            var areaSuperficial = 4 * Math.PI * radio * radio;
+            resultadoElement.textContent = 'Área Superficial: ' + areaSuperficial;
+        }
+    }
+        </script>
