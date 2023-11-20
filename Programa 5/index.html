@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Solar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Explora el Sistema Solar</h1>
+
+    <label for="planetSelect">Selecciona un planeta:</label>
+    <select id="planetSelect" onchange="changeImage()">
+        <option value="mercury">Mercurio</option>
+        <option value="venus">Venus</option>
+        <option value="earth">Tierra</option>
+        <option value="mars">Marte</option>
+    </select>
+
+   <img id="planetSelect" src="media\Mercurio.jpg" alt="Imagen del planeta Mercurio">
+
+    <script>
+        function changeImage() {
+            var selectElement = document.getElementById("planetSelect");
+            var imageElement = document.getElementById("planetImage");
+            var selectedPlanet = selectElement.value;
+
+            // Cambia la imagen según la opción seleccionada
+            switch (selectedPlanet) {
+                case "mercury":
+                    imageElement.src = "media\Mercurio.jpg";
+                    break;
+                case "venus":
+                    imageElement.src = "media\Venus.jpg";
+                    break;
+                case "earth":
+                    imageElement.src = "media\Tierra.jpg";
+                    break;
+                case "mars":
+                    imageElement.src = "media\Marte.jpg";
+                    break;
+                default:
+                    imageElement.src = "default.jpg";
+            }
+        }
+    </script>
+
+</body>
+</html>
